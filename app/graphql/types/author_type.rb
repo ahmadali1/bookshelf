@@ -12,4 +12,6 @@ class Types::AuthorType < Types::BaseObject
   end
 
   field :location, Types::LocationType, null: false
+
+  field :publication_years, [GraphQL::Types::ISO8601DateTime], null: false
 end

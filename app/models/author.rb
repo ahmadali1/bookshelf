@@ -6,4 +6,8 @@ class Author < ApplicationRecord
   def location
     [rand(90), rand(90)]
   end
+
+  def publication_years
+    [Date.today, Date.today - rand(90).year, Date.today - rand(90).year]
+  end
 end
