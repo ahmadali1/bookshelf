@@ -10,4 +10,6 @@ class Types::AuthorType < Types::BaseObject
   def full_name_full
     object.id.to_s + 'FULL'
   end
+
+  field :location, Types::LocationType, null: false
 end
