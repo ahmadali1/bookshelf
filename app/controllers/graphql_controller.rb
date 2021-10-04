@@ -3,7 +3,11 @@ class GraphqlController < ApplicationController
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
+    # Here is how one can fetch headers
+    # session = Session.where(request.headers['Authorization']).first
     context = {
+      # current_user = session.user
+      current_author: Author.last
       # Query context goes here, for example:
       # current_user: current_user,
     }

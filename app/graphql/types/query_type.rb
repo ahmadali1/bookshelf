@@ -25,8 +25,20 @@ class Types::QueryType < Types::BaseObject
 
     Random.hex(20)
   end
+
+  field :current_author, Types::AuthorType, null: true, description: 'Gives currently logged in Author'
+
+  def current_author
+    context[:current_author]
+  end
 end
 
 # {
 #   login(username: "ahmad.ali", password: "password")
+# }
+
+# {
+#   currentAuthor {
+#     id
+#   }
 # }
