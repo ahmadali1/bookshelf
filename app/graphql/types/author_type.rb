@@ -35,4 +35,11 @@ class Types::AuthorType < Types::BaseObject
 
     true
   end
+
+  # when ever a row is fetched, it will check this row if it should be returned as a result or not
+  def self.authorized?(object, context)
+    # object.first_name == 'XYZ' && object.last_name == 'ABC'
+
+    true
+  end
 end
