@@ -2,9 +2,13 @@ class Types::AuthorInputType < GraphQL::Schema::InputObject
   graphql_name "AuthorInputType"
   description "All attributes for creating an author"
 
+  argument :id, ID, required: false
   argument :first_name, String, required: false, camelize: false
   argument :last_name, String, required: false, camelize: false
 end
+
+
+
 
 class Types::AuthorType < Types::BaseObject
   description 'This is an author'
