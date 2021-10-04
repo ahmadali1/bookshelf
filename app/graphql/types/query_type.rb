@@ -11,6 +11,12 @@ class Types::QueryType < Types::BaseObject
 
   def authors
     Author.all
+
+    # here is how we rescue exceptions
+    # Author.find('123456666')
+
+    # rescue ActiveRecord::RecordNotFound => e
+    # GraphQL::ExecutionError.new("Invalid input: #{e.to_s}")
   end
 
   field :login, String, null: true, description: 'Login as user' do
