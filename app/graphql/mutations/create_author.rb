@@ -6,6 +6,12 @@ class Mutations::CreateAuthor < GraphQL::Schema::Mutation
   def resolve(author:)
     Author.create(author.to_h)
   end
+
+  # allow or prevent running queries
+  def accessible?(context)
+    # context[:current_user].is_super_admin?
+    true
+  end
 end
 
 
