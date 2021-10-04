@@ -9,6 +9,17 @@ class Types::MutationType < Types::BaseObject
     _author = Author.where(id: author[:id]).last
     _author&.update(author.to_h)
   end
+
+  field :delete_author, Boolean, null: false, description: 'deletes the author' do
+    argument :id, ID, required: true
+  end
+
+  def delete_author(id:)
+    _author = Author.where(id: id).destroy_all
+
+    true
+  end
+
 end
 
 
@@ -22,4 +33,8 @@ end
 #     "first_name": "First NameN",
 #     "last_name": "Last Name"
 #   }
+# }
+
+# mutation {
+#   deleteAuthor(id: 4)
 # }
