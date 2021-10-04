@@ -12,4 +12,21 @@ class Types::QueryType < Types::BaseObject
   def authors
     Author.all
   end
+
+  field :login, String, null: true, description: 'Login as user' do
+    argument :username, String, required: true
+    argument :password, String, required: true
+  end
+
+  def login(username:, password:)
+    # if User.find_by(username: username, password: password).present?
+    #   # return some SESSION_key here
+    # end
+
+    Random.hex(20)
+  end
 end
+
+# {
+#   login(username: "ahmad.ali", password: "password")
+# }
