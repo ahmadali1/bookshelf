@@ -1,19 +1,18 @@
 class Mutations::CreateAuthor < GraphQL::Schema::Mutation
   null true
 
-  argument :first_name, String, required: false, camelize: false
-  argument :last_name, String, required: false, camelize: false
+  argument :author, Types::AuthorInputType, required: true
 
-  def resolve(first_name:, last_name:)
-    Author.create(first_name: first_name, last_name: last_name)
+  def resolve(author:)
+    Author.create(author.to_h)
   end
 end
 
 
 # Query Variables
 
-# mutation createAuthor($f_name: String, $l_name: String) {
-#   createAuthor(first_name: $f_name, last_name: $l_name) {
+# mutation createAuthor($author:AuthorInputType!) {
+#   createAuthor(author: $author) {
 #     id
 #     fullName
 #   }
@@ -21,6 +20,8 @@ end
 
 
 # {
-#   "f_name": "First Name",
-#   "l_name": "Last Name"
+#   "author" : {
+#     "first_name": "First Name",
+#     "last_name": "Last Name"
+#   }
 # }
