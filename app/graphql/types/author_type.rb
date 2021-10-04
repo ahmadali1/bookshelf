@@ -26,4 +26,13 @@ class Types::AuthorType < Types::BaseObject
   field :location, Types::LocationType, null: false
 
   field :publication_years, [GraphQL::Types::ISO8601DateTime], null: false
+
+
+  # show author type in schema or not?
+  def self.visible?(context)
+    # lets say we only have to expose schema for logged in users? then check context i.e.
+    # context[:current_user].present?
+
+    true
+  end
 end
